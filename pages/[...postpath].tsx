@@ -23,16 +23,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			},
 		};
 	}
-	if (referringURL?.includes('pinterest.com') || pin) {
-		return {
-			redirect: {
-				permanent: false,
-				destination: `${
-					endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string)
-				}`,
-			},
-		};
-	}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
